@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-mentor-program",
+  "version": "1.0.0",
+  "description": "my homework for nodejs mentor program",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "task1": "node ./src/task_1_1.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cetrix13/nodejs-mentor-program.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Aleksandr Dadykin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cetrix13/nodejs-mentor-program/issues"
+  },
+  "homepage": "https://github.com/cetrix13/nodejs-mentor-program#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
