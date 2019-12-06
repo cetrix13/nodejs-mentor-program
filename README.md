@@ -13,5 +13,11 @@ npm run task1
 npm run test
 ```
 
+### Task 1.2
+
+Please, run the following command to check task 1.2.
+```
+npm run task2
+```
 
 
