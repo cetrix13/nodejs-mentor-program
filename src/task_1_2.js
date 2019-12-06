@@ -3,8 +3,8 @@ const lineReader = require('line-reader');
 const csv = require('csvtojson')
 const helpers = require('./helpers');
 const fs = require('fs');
-const FILE_PATH = '../csv/file.csv';
-const NEW_FILE_PATH = '../csv/new-file.csv';
+const FILE_PATH = './csv/file.csv';
+const NEW_FILE_PATH = './csv/new-file.csv';
 const SEPARATOR = ',';
 let index = 1;
 

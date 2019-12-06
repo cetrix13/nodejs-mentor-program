@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "task1": "node ./src/task_1_1.js"
+    "task1": "node ./src/task_1_1.js",
     "task2": "node ./src/task_1_2.js"
   },
   "repository": {
