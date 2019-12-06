@@ -1,36 +1,35 @@
 // https://github.com/nickewing/line-reader
-const lineReader = require('line-reader');
-const csv = require('csvtojson')
-const helpers = require('./helpers');
-const fs = require('fs');
-const FILE_PATH = '../csv/file.csv';
-const NEW_FILE_PATH = '../csv/new-file.csv';
-const SEPARATOR = ',';
+import lineReader from 'line-reader';
+import csv from 'csvtojson';
+import fs from 'fs';
+import { FILE_PATH, SEPARATOR, NEW_FILE_PATH } from './constants.js';
+
 let index = 1;
+let headers = [];
 
 const newFile = fs.createWriteStream(NEW_FILE_PATH, {
-  flags: 'w'
-})
+    flags: 'w'
+});
 
 function writeJSONLineToCSVFile(json) {
-  const line = Object.values(json).join(SEPARATOR);
-  newFile.write(line + "\n");
+    const line = Object.values(json).join(SEPARATOR);
+    newFile.write(`${line}\n`);
 }
 
-lineReader.eachLine(FILE_PATH, function(line) {
-  if (index === 1) {
-    headers = line.split(SEPARATOR);
-  }
+lineReader.eachLine(FILE_PATH, line => {
+    if (index === 1) {
+        headers = line.split(SEPARATOR);
+    }
 
-  csv({ output: 'json', noheader: true, headers: headers })
-  .fromString(line)
-  .then(json =>  writeJSONLineToCSVFile(json.pop()));
+    csv({ output: 'json', noheader: true, headers })
+        .fromString(line)
+        .then(json =>  writeJSONLineToCSVFile(json.pop()));
 
-  if (!line) {
-    return false;
-  }
+    if (!line) {
+        return false;
+    }
 
-  index++;
+    index++;
 });
 
 console.log('## New csv file is created! ##');
