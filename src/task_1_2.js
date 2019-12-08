@@ -1,12 +1,12 @@
 // https://github.com/nickewing/line-reader
-const lineReader = require('line-reader');
-const csv = require('csvtojson')
-const helpers = require('./helpers');
-const fs = require('fs');
-const FILE_PATH = './csv/file.csv';
-const NEW_FILE_PATH = './csv/new-file.csv';
-const SEPARATOR = ',';
+import lineReader from 'line-reader';
+import csv from 'csvtojson';
+import helpers from './helpers';
+import fs from 'fs';
+import { FILE_PATH, SEPARATOR, NEW_FILE_PATH } from './constants.js';
+
 let index = 1;
+let headers = [];
 
 const newFile = fs.createWriteStream(NEW_FILE_PATH, {
   flags: 'w'
