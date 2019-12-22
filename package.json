@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "task1": "babel-node ./src/task_1_1.js",
-    "task2": "babel-node ./src/task_1_2.js"
+    "task1.1": "babel-node ./src/task_1_1.js",
+    "task1.2": "babel-node ./src/task_1_2.js",
+    "task2.1": "PORT=3000 babel-node ./src/task_2_1.js"
   },
   "repository": {
     "type": "git",
