@@ -11,6 +11,7 @@ app.get('/users', (req, res) => {
         res.send(requestedUser);
     } else {
         res.statusCode = 404;
+        res.end();
     }
 });
 
@@ -22,7 +23,22 @@ app.post('/users', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 200;
 
-    res.json(user);
+    res.send(user);
+});
+
+app.put('/users', (req, res) => {
+    const { query: { id } } = req;
+    const index = users.findIndex(user => user.id === id);
+
+    if (index !== -1) {
+        users[index] = { ...users[index], ...req.body };
+        res.setHeader('Content-Type', 'application/json');
+        res.statusCode = 200;
+        res.send(users[index]);
+    } else {
+        res.statusCode = 404;
+        res.end();
+    }
 });
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
