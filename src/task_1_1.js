@@ -9,7 +9,4 @@ const rl = readline.createInterface({
 
 console.log('## Press ctrl-C or ctrl-D to end transmision ##');
 
-rl.on('line', (input) => {
-    const result = reversedStr(input);
-    console.log(result);
-});
+rl.on('line', input => console.log(reversedStr(input)));
