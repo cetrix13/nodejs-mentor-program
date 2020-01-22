@@ -1,7 +1,7 @@
 import User from '../models/User';
 import { validateSchema } from './helpers';
+import express from 'express';
 
-const express = require('express');
 const Joi = require('@hapi/joi');
 const app = express();
 const router = express.Router();
@@ -17,6 +17,7 @@ const schema = Joi.object().keys({
 });
 
 router.route('/users/:id')
+
     .get((req, res) => {
         const { params: { id } } = req;
         const user = users.find(user => user.id === id);
@@ -26,7 +27,8 @@ router.route('/users/:id')
             res.status(404).end();
         }
     })
-    .post(validateSchema(schema),(req,res) => {
+
+    .post(validateSchema(schema), (req, res) => {
         const { id, login, password, age, isDeleted } = req.body;
         const user = new User(id, login, password, age, isDeleted);
         users.push(user);
@@ -34,6 +36,7 @@ router.route('/users/:id')
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(user);
     })
+
     .put(validateSchema(schema), (req, res) => {
         const { params: { id } } = req;
         const index = users.findIndex(user => user.id === id);
