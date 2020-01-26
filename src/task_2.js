@@ -1,20 +1,13 @@
-import User from '../models/User';
+import UserDto from './models/UserDto';
 import { validateSchema } from './helpers';
 import express from 'express';
-import Joi from '@hapi/joi';
+import { createUserSchema, updateUserSchema } from './schemas/UserSchema';
+
 
 const app = express();
 const router = express.Router();
 const port = process.env.PORT;
 const users = [];
-
-const schema = Joi.object().keys({
-    id: Joi.string().required(),
-    login: Joi.string().required(),
-    password: Joi.string().alphanum().required(),
-    age: Joi.number().min(4).max(130).required(),
-    isDeleted: Joi.boolean().required()
-});
 
 router.route('/users/:id')
 
@@ -24,28 +17,28 @@ router.route('/users/:id')
         if (user) {
             res.status(200).send(user);
         } else {
-            res.status(404).end();
+            res.sendStatus(404);
         }
     })
 
-    .post(validateSchema(schema), (req, res) => {
+    .post(validateSchema(createUserSchema), (req, res) => {
         const { id, login, password, age, isDeleted } = req.body;
-        const user = new User(id, login, password, age, isDeleted);
+        const user = new UserDto(id, login, password, age, isDeleted);
         users.push(user);
 
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(user);
     })
 
-    .put(validateSchema(schema), (req, res) => {
+    .put(validateSchema(updateUserSchema), (req, res) => {
         const { params: { id } } = req;
         const index = users.findIndex(user => user.id === id);
 
         if (index !== -1) {
             users[index] = { ...users[index], ...req.body };
-            res.status(200).json(users[index]);
+            res.status(200).send(users[index]);
         } else {
-            res.status(404).end();
+            res.sendStatus(404);
         }
     });
 
