@@ -20,24 +20,38 @@ Please, run the following command to check task 1.2.
 npm run task1.2
 ```
 
-### Task 2.1 and Task 2.2
+### Tasks 2.1 and 2.2
 
-Please, run the following command to check task 2.1 and task 2.2
+Please, run the following command to check tasks 2.1 and 2.2
 ```
 npm run task2
 ```
 - create user: http://localhost:3000/users (POST). Request example is in assets/create-user.json
 - view user: http://localhost:3000/users/1 (GET)
 - update user: http://localhost:3000/users/1 (PUT)
-- delete user: http://localhost:300/users/1 (PUT). Set flag `isDeleted` to false.
+- delete user: http://localhost:300/users/1 (PUT). Set flag `isDeleted` to true.
 
-### Task 3.1
+### Tasks 3.1 and 3.2
 
-Please install PostgreSQL, then create database `node_js` and populate it with data.
+Please install PostgreSQL, then create database `nodejs` and populate it with data.
 
 ```
 brew install postgresql
-createdb node_js
-psql -d node_js -f assets/create_users_table.sql
+
+# start service and relaunch it at login
+brew services start postgresql
+
+# create a new user (login: admin, password: admin)
+createuser --interactive --pwprompt
+
+# create a new database
+createdb nodejs --owner=admin
+
+# populate database from a file
+psql -d nodejs --user=admin -W -f assets/create_users_table.sql
 ```
 
+Please, run the following command to check tasks 3.1 and 3.2
+```
+npm run task3
+```
