@@ -1,8 +1,8 @@
 import User from '../models/User';
 import { validateSchema } from './helpers';
 import express from 'express';
+import Joi from '@hapi/joi';
 
-const Joi = require('@hapi/joi');
 const app = express();
 const router = express.Router();
 const port = process.env.PORT;
