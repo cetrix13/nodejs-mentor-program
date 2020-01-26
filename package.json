@@ -4,10 +4,11 @@
   "description": "my homework for nodejs mentor program",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest src/tests",
     "task1.1": "babel-node ./src/task_1_1.js",
     "task1.2": "babel-node ./src/task_1_2.js",
-    "task2": "PORT=3000 babel-node ./src/task_2.js"
+    "task2": "PORT=3000 babel-node ./src/task_2.js",
+    "task3": "PORT=3000 babel-node ./src/task_3.js"
   },
   "repository": {
     "type": "git",

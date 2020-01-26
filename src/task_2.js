@@ -3,7 +3,6 @@ import { validateSchema } from './helpers';
 import express from 'express';
 import { createUserSchema, updateUserSchema } from './schemas/UserSchema';
 
-
 const app = express();
 const router = express.Router();
 const port = process.env.PORT;

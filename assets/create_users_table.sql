@@ -5,7 +5,7 @@ CREATE TABLE "users" (
   login VARCHAR(100),
   password VARCHAR(100),
   age SMALLINT,
-  isDeleted BOOLEAN
+  is_deleted BOOLEAN
 );
 
 INSERT INTO "users" VALUES(1, 'oleg-pronin', '123', 21, false);
