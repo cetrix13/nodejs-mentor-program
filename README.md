@@ -1,4 +1,4 @@
-# Installation.
+# Installation
 
 Please run the following command to install all dependencies
 ```
