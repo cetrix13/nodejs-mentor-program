@@ -1,4 +1,4 @@
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.reversedStr = (input) => (input.split('').reverse().join(''));
 exports.uniqueID = (() => {
     let count = 0;
@@ -22,10 +22,9 @@ exports.validateSchema = (schema) => {
         });
         if (error && error.isJoi) {
             res.status(400).json(exports.errorResponse(error.details));
-        }
-        else {
-            next();
+        } else {
+            return next();
         }
     };
 };
-//# sourceMappingURL=helpers.js.map
+// # sourceMappingURL=helpers.js.map

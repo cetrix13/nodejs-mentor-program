@@ -26,9 +26,9 @@ router.route('/users')
 router.route('/users/:id')
     .get((req, res) => {
         const { params: { id } } = req;
-        const user = users.find(user => user.id === parseInt(id, 10));
-        if (user) {
-            res.status(200).send(user);
+        const selectedUser = users.find(user => user.id === parseInt(id, 10));
+        if (selectedUser) {
+            res.status(200).send(selectedUser);
         } else {
             res.sendStatus(404);
         }
