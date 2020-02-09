@@ -1,30 +1,22 @@
 import { Model, DataTypes, BuildOptions } from 'sequelize';
 import SequelizeInstance from '../config/connect';
 
-export type UserModelStatic = typeof Model & {
+export type GroupModelStatic = typeof Model & {
     new(values?: object, options?: BuildOptions);
 }
 
-const User = <UserModelStatic>SequelizeInstance.define('user', {
+const Group = <GroupModelStatic>SequelizeInstance.define('group', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    login: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    age: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    isDeleted: {
-        type: DataTypes.BOOLEAN,
+    permissions: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
     }
 }, {
@@ -33,4 +25,4 @@ const User = <UserModelStatic>SequelizeInstance.define('user', {
     underscored: true
 });
 
-export default User;
+export default Group;

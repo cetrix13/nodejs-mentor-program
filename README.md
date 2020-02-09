@@ -17,6 +17,7 @@ npm run test
 
 Please, run the following command to check task 1.2.
 ```
+npm install
 npm run task1.2
 ```
 
@@ -36,6 +37,7 @@ npm run task2
 Please install PostgreSQL, then create database `nodejs` and populate it with data.
 
 ```
+npm install
 brew install postgresql
 
 # start service and relaunch it at login
@@ -53,5 +55,26 @@ psql -d nodejs --user=admin -W -f assets/create_users_table.sql
 
 Please, run the following command to check tasks 3.1 and 3.2
 ```
+npm install
 npm run task3
 ```
+
+### Tasks 4.1, 4.2 and 4.3
+
+Please, run the following commands to check task 4.1
+
+```
+npm install
+
+# if database `nodejs` and `admin` user aren't created, please first follow instructions from Task #3
+
+# populate database from a file
+psql -d nodejs --user=admin -W -f assets/create_groups_table.sql
+
+npm run task4
+```
+- view all groups: http://localhost:3000/groups (GET) 
+- create group: http://localhost:3000/groups (POST). Request example is in assets/create-group.json
+- view group: http://localhost:3000/groups/1 (GET)
+- update group: http://localhost:3000/groups/1 (PUT)
+- delete group: http://localhost:300/groups/1 (DELETE).

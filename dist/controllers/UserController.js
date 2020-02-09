@@ -2,9 +2,9 @@ const __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { 'default': mod };
 };
 Object.defineProperty(exports, '__esModule', { value: true });
-const UserService_1 = __importDefault(require('../services/UserService'));
 const User_1 = __importDefault(require('../models/User'));
 const UserDto_1 = __importDefault(require('../models/UserDto'));
+const UserService_1 = __importDefault(require('../services/UserService'));
 class UserController {
     constructor() {
         this.userService = new UserService_1.default(User_1.default);
@@ -54,5 +54,5 @@ class UserController {
         };
     }
 }
-exports.UserController = UserController;
+exports.default = UserController;
 // # sourceMappingURL=UserController.js.map

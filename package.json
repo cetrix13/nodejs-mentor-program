@@ -6,11 +6,12 @@
   "scripts": {
     "test": "jest src/tests",
     "build": "tsc --project tsconfig.json && eslint --fix ./dist/**/*.js",
+    "dev": "tsc --project tsconfig.json --watch",
     "task1.1": "node ./dist/task_1_1.js",
     "task1.2": "node ./dist/task_1_2.js",
     "task2": "PORT=3000 node ./dist/task_2.js",
     "task3": "PORT=3000 node ./dist/task_3.js",
-    "task4": "PORT=3000 node ./dist/task_4.js"
+    "task4": "PORT=3000 node ./dist/task_3.js"
   },
   "repository": {
     "type": "git",
@@ -29,8 +30,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
-    "jest": "^24.9.0",
-    "nodemon": "^2.0.2"
+    "jest": "^24.9.0"
   },
   "dependencies": {
     "@hapi/joi": "^17.0.0",

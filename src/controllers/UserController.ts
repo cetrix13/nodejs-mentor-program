@@ -1,9 +1,9 @@
-import UserService from '../services/UserService';
 import { Request, Response } from 'express';
 import UserModel from '../models/User';
 import UserDto from '../models/UserDto';
+import UserService from '../services/UserService';
 
-export class UserController {
+export default class UserController {
     private userService: UserService;
 
     constructor() {
