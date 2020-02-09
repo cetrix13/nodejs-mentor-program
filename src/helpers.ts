@@ -27,7 +27,7 @@ export const validateSchema = (schema) => {
         if (error && error.isJoi) {
             res.status(400).json(errorResponse(error.details));
         } else {
-            next();
+            return next();
         }
     };
 };

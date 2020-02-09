@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest src/tests",
-    "build": "tsc --project tsconfig.json && eslint --fix ./dist/**/*.js",
+    "build": "tsc --project tsconfig.json && eslint --fix ./dist --ext .js",
     "dev": "tsc --project tsconfig.json --watch",
     "task1.1": "node ./dist/task_1_1.js",
     "task1.2": "node ./dist/task_1_2.js",
