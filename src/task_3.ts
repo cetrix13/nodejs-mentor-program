@@ -1,9 +1,9 @@
 import { validateSchema } from './helpers';
 import { createUserSchema, updateUserSchema } from './schemas/UserSchema';
-import express from 'express';
+import express, { Application } from 'express';
 import { UserController } from './controllers/UserController';
 
-const app = express();
+const app: Application = express();
 const router = express.Router();
 const port = process.env.PORT;
 const userController = new UserController();

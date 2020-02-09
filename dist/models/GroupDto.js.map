@@ -1,0 +1,1 @@
+{"version":3,"file":"GroupDto.js","sourceRoot":"./src/*.ts/","sources":["models/GroupDto.ts"],"names":[],"mappings":";AAAA,wCAAsC;AAItC,MAAqB,KAAK;IAKtB,YAAY,EAAE,EAAE,IAAI,EAAE,WAAW;QAC7B,IAAI,CAAC,EAAE,GAAG,EAAE,IAAI,kBAAQ,EAAE,CAAC;QAC3B,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,WAAW,GAAG,WAAW,CAAC;IACnC,CAAC;CACJ;AAVD,wBAUC"}
