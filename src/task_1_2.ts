@@ -25,9 +25,7 @@ lineReader.eachLine(FILE_PATH, line => {
         .fromString(line)
         .then(json =>  writeJSONLineToCSVFile(json.pop()));
 
-    if (!line) {
-        return false;
-    }
+    
 
     index++;
 });

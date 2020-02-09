@@ -6,13 +6,13 @@ import { createUserSchema, updateUserSchema } from './schemas/UserSchema';
 const app = express();
 const router = express.Router();
 const port = process.env.PORT;
-const users = [];
+const users: UserDto[] = [];
 
 router.route('/users/:id')
 
     .get((req, res) => {
         const { params: { id } } = req;
-        const user = users.find(user => user.id === id);
+        const user = users.find(user => user.id === parseInt(id, 10));
         if (user) {
             res.status(200).send(user);
         } else {
@@ -31,7 +31,7 @@ router.route('/users/:id')
 
     .put(validateSchema(updateUserSchema), (req, res) => {
         const { params: { id } } = req;
-        const index = users.findIndex(user => user.id === id);
+        const index = users.findIndex(user => user.id === parseInt(id, 10));
 
         if (index !== -1) {
             users[index] = { ...users[index], ...req.body };
