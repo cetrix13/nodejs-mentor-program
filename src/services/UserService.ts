@@ -1,28 +1,28 @@
 import UserModel from '../models/User';
+import Service from './Service';
+import Bluebird from 'bluebird';
+import { Model } from 'sequelize/types';
 
-export default class UserService {
-    private userModel: typeof UserModel;
+type SequelizerRecord = Bluebird<void | Model[]>;
+export default class UserService extends Service {
 
     constructor(userModel: typeof UserModel) {
-        this.userModel = userModel;
+        super(userModel);
     }
-    getAllUsers() {
-        return this.userModel.findAll({ where: { isDeleted: false } })
-            .catch(err => console.error(err));
+
+    getAllUsers(): SequelizerRecord {
+        return this.getAll();
     }
 
     getUserById(id: number) {
-        return this.userModel.findAll({ where: { id } })
-            .catch(err => console.error(err));
+        return this.getById(id);
     }
 
     createUser(user) {
-        return this.userModel.create(user)
-            .catch(err => console.error(err));
+        return this.create(user);   
     }
 
     updateUser(id, fields) {
-        return this.userModel.update(fields, { where: { id } })
-            .catch(err => console.error(err));
+        return this.update(id, fields);
     }
 }

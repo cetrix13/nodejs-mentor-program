@@ -1,23 +1,23 @@
+const __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { 'default': mod };
+};
 Object.defineProperty(exports, '__esModule', { value: true });
-class UserService {
+const Service_1 = __importDefault(require('./Service'));
+class UserService extends Service_1.default {
     constructor(userModel) {
-        this.userModel = userModel;
+        super(userModel);
     }
     getAllUsers() {
-        return this.userModel.findAll({ where: { isDeleted: false } })
-            .catch(err => console.error(err));
+        return this.getAll();
     }
     getUserById(id) {
-        return this.userModel.findAll({ where: { id } })
-            .catch(err => console.error(err));
+        return this.getById(id);
     }
     createUser(user) {
-        return this.userModel.create(user)
-            .catch(err => console.error(err));
+        return this.create(user);
     }
     updateUser(id, fields) {
-        return this.userModel.update(fields, { where: { id } })
-            .catch(err => console.error(err));
+        return this.update(id, fields);
     }
 }
 exports.default = UserService;
