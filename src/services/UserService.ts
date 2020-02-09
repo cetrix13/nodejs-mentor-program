@@ -1,16 +1,13 @@
 import UserModel from '../models/User';
 import Service from './Service';
-import Bluebird from 'bluebird';
-import { Model } from 'sequelize/types';
 
-type SequelizerRecord = Bluebird<void | Model[]>;
 export default class UserService extends Service {
 
     constructor(userModel: typeof UserModel) {
         super(userModel);
     }
 
-    getAllUsers(): SequelizerRecord {
+    getAllUsers() {
         return this.getAll();
     }
 
