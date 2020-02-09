@@ -5,7 +5,7 @@ export default class User {
     private login: string;
     private password: string;
     private age: number;
-    private isDeleted: boolean;
+    public isDeleted: boolean;
 
     constructor(id: number, login: string, password: string, age: number, isDeleted = false) {
         this.id = id || uniqueID();

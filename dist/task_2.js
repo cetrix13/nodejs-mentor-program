@@ -10,6 +10,18 @@ const app = express_1.default();
 const router = express_1.default.Router();
 const port = process.env.PORT;
 const users = [];
+router.route('/users')
+    .get((_req, res) => {
+    const activeUsers = users.filter(user => !user.isDeleted);
+    res.status(200).send(activeUsers);
+})
+    .post(helpers_1.validateSchema(UserSchema_1.createUserSchema), (req, res) => {
+    const { id, login, password, age, isDeleted } = req.body;
+    const user = new UserDto_1.default(id, login, password, age, isDeleted);
+    users.push(user);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).send(user);
+});
 router.route('/users/:id')
     .get((req, res) => {
     const { params: { id } } = req;
@@ -20,13 +32,6 @@ router.route('/users/:id')
     else {
         res.sendStatus(404);
     }
-})
-    .post(helpers_1.validateSchema(UserSchema_1.createUserSchema), (req, res) => {
-    const { id, login, password, age, isDeleted } = req.body;
-    const user = new UserDto_1.default(id, login, password, age, isDeleted);
-    users.push(user);
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).send(user);
 })
     .put(helpers_1.validateSchema(UserSchema_1.updateUserSchema), (req, res) => {
     const { params: { id } } = req;

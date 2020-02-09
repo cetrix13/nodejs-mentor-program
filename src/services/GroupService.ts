@@ -1,9 +1,6 @@
 import GroupModel from '../models/Group';
 import Service from './Service';
-import Bluebird from 'bluebird';
-import { Model } from 'sequelize/types';
 
-type SequelizerRecord = Bluebird<void | Model[]>;
 export default class GroupService extends Service {
 
     constructor(groupModel: typeof GroupModel) {
