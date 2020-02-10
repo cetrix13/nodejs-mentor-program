@@ -3,16 +3,19 @@ const __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, '__esModule', { value: true });
 const Group_1 = __importDefault(require('../models/Group'));
+const UserGroup_1 = __importDefault(require('../models/UserGroup'));
 const GroupDto_1 = __importDefault(require('../models/GroupDto'));
 const GroupService_1 = __importDefault(require('../services/GroupService'));
+const UserGroupService_1 = __importDefault(require('../services/UserGroupService'));
 class GroupController {
     constructor() {
         this.groupService = new GroupService_1.default(Group_1.default);
+        this.userGroupService = new UserGroupService_1.default(UserGroup_1.default);
     }
     getAll() {
         return async (_req, res) => {
             const groups = await this.groupService.getAllGroups();
-            if (groups && groups.length) {
+            if (groups) {
                 res.status(200).send(groups);
             } else {
                 res.sendStatus(500);
@@ -56,7 +59,8 @@ class GroupController {
     delete() {
         return async (req, res) => {
             const { params: { id } } = req;
-            const result = await this.groupService.deleteGroup(id);
+            const result = await Promise.all([this.groupService.deleteGroup(id), this.userGroupService.deleteGroup(id)])
+                .then(value => value);
             if (result) {
                 res.sendStatus(200);
             } else {

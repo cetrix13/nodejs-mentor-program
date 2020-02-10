@@ -4,7 +4,7 @@ type ServiceModel = typeof Model & {
     new(values?: object, options?: BuildOptions);
 }
 export default class Service {
-    model: ServiceModel;
+    protected model: ServiceModel;
 
     constructor(model: ServiceModel) {
         this.model = model;

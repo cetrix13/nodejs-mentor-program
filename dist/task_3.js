@@ -18,7 +18,8 @@ router.route('/users')
     .post(helpers_1.validateSchema(UserSchema_1.createUserSchema), userController.create());
 router.route('/users/:id')
     .get(userController.getById())
-    .put(helpers_1.validateSchema(UserSchema_1.updateUserSchema), userController.update());
+    .put(helpers_1.validateSchema(UserSchema_1.updateUserSchema), userController.update())
+    .delete(userController.delete());
 router.route('/groups')
     .get(groupController.getAll())
     .post(helpers_1.validateSchema(GroupSchema_1.createGroupSchema), groupController.create());
@@ -28,5 +29,5 @@ router.route('/groups/:id')
     .delete(groupController.delete());
 app.use(express_1.default.json());
 app.use('/', router);
-app.listen(port, () => console.log(`Server running on http://localhost:${port}/users and http://localhost:${port}/groups`));
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
 // # sourceMappingURL=task_3.js.map
