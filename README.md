@@ -1,14 +1,8 @@
-# Installation
-
-Please run the following command to install all dependencies
-```
-npm install
-```
-
 ### Task 1.1
 
 Please, run the following command to check and test task 1.1.
 ```
+npm install
 npm run task1.1
 npm run test
 ```
@@ -25,6 +19,7 @@ npm run task1.2
 
 Please, run the following command to check tasks 2.1 and 2.2
 ```
+npm install
 npm run task2
 ```
 - view all users: http://localhost:3000/users (GET) 
@@ -73,6 +68,7 @@ npm install
 psql -d nodejs --user=admin -W -f assets/create_users_table.sql
 psql -d nodejs --user=admin -W -f assets/create_groups_table.sql
 psql -d nodejs --user=admin -W -f assets/create_user_group_table.sql
+
 # to check tasks #4.1 and #4.2
 npm run task4
 ```
