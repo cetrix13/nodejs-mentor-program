@@ -3,16 +3,19 @@ const __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, '__esModule', { value: true });
 const User_1 = __importDefault(require('../models/User'));
+const UserGroup_1 = __importDefault(require('../models/UserGroup'));
 const UserDto_1 = __importDefault(require('../models/UserDto'));
 const UserService_1 = __importDefault(require('../services/UserService'));
+const UserGroupService_1 = __importDefault(require('../services/UserGroupService'));
 class UserController {
     constructor() {
         this.userService = new UserService_1.default(User_1.default);
+        this.userGroupService = new UserGroupService_1.default(UserGroup_1.default);
     }
     getAll() {
         return async (_req, res) => {
             const users = await this.userService.getAllUsers();
-            if (users && users.length) {
+            if (users) {
                 res.status(200).send(users);
             } else {
                 res.sendStatus(500);
@@ -48,6 +51,18 @@ class UserController {
             const result = await this.userService.updateUser(id, req.body);
             if (result) {
                 res.status(200).send(result);
+            } else {
+                res.sendStatus(500);
+            }
+        };
+    }
+    delete() {
+        return async (req, res) => {
+            const { params: { id } } = req;
+            const result = await Promise.all([this.userService.deleteUser(id), this.userGroupService.deleteUser(id)])
+                .then(value => value);
+            if (result) {
+                res.sendStatus(200);
             } else {
                 res.sendStatus(500);
             }

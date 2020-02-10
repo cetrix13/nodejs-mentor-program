@@ -17,7 +17,8 @@ router.route('/users')
 
 router.route('/users/:id')
     .get(userController.getById())
-    .put(validateSchema(updateUserSchema), userController.update());
+    .put(validateSchema(updateUserSchema), userController.update())
+    .delete(userController.delete());
 
 router.route('/groups')
     .get(groupController.getAll())
@@ -32,4 +33,4 @@ router.route('/groups/:id')
 app.use(express.json());
 app.use('/', router);
 
-app.listen(port, () => console.log(`Server running on http://localhost:${port}/users and http://localhost:${port}/groups`));
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));

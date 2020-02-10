@@ -1,18 +1,22 @@
 import { Request, Response } from 'express';
 import GroupModel from '../models/Group';
+import UserGroupModel from '../models/UserGroup';
 import GroupDto from '../models/GroupDto';
 import GroupService from '../services/GroupService';
+import UserGroupService from '../services/UserGroupService';
 
 export default class GroupController {
     private groupService: GroupService;
+    private userGroupService: UserGroupService;
 
     constructor() {
         this.groupService = new GroupService(GroupModel);
+        this.userGroupService = new UserGroupService(UserGroupModel);
     }
     getAll() {
         return async (_req: Request, res: Response) => {
             const groups = await this.groupService.getAllGroups();
-            if (groups && groups.length) {
+            if (groups) {
                 res.status(200).send(groups);
             } else {
                 res.sendStatus(500);
@@ -56,7 +60,8 @@ export default class GroupController {
     delete() {
         return async (req: Request, res: Response) => {
             const { params: { id } } = req;
-            const result = await this.groupService.deleteGroup(id);
+            const result = await Promise.all([ this.groupService.deleteGroup(id), this.userGroupService.deleteGroup(id) ])
+                .then(value => value);
             if (result) {
                 res.sendStatus(200);
             } else {

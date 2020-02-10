@@ -2,7 +2,8 @@ import GroupModel from '../models/Group';
 import Service from './Service';
 
 export default class GroupService extends Service {
-
+    protected model;
+    
     constructor(groupModel: typeof GroupModel) {
         super(groupModel);
     }

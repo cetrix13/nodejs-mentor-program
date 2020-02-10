@@ -19,6 +19,10 @@ class UserService extends Service_1.default {
     updateUser(id, fields) {
         return this.update(id, fields);
     }
+    deleteUser(id) {
+        return this.model.update({ isDeleted: true }, { where: { id } })
+            .catch(err => console.error(err));
+    }
 }
 exports.default = UserService;
 // # sourceMappingURL=UserService.js.map
