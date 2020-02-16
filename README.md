@@ -64,7 +64,7 @@ npm install
 
 # if database `nodejs` and `admin` user aren't created, please first follow instructions from Task #3
 
-# populate database from a files
+# populate database from files
 psql -d nodejs --user=admin -W -f assets/create_users_table.sql
 psql -d nodejs --user=admin -W -f assets/create_groups_table.sql
 psql -d nodejs --user=admin -W -f assets/create_user_group_table.sql
