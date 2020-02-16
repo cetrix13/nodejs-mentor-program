@@ -4,6 +4,8 @@ import { createGroupSchema, updateGroupSchema } from './schemas/GroupSchema';
 import express, { Application } from 'express';
 import UserController from './controllers/UserController';
 import GroupController from './controllers/GroupController';
+import customLogger from './middleware/CustomLogger';
+import errorHandler from './middleware/ErrorHandler';
 
 const app: Application = express();
 const router = express.Router();
@@ -29,7 +31,8 @@ router.route('/groups/:id')
     .put(validateSchema(updateGroupSchema), groupController.update())
     .delete(groupController.delete());
 
-
+app.use(customLogger);
+app.use(errorHandler);
 app.use(express.json());
 app.use('/', router);
 

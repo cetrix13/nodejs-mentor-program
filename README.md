@@ -77,3 +77,13 @@ npm run task4
 - view group: http://localhost:3000/groups/1 (GET)
 - update group: http://localhost:3000/groups/1 (PUT)
 - delete group: http://localhost:300/groups/1 (DELETE).
+
+### Tasks 5.1, 5.2
+
+Please, run the following commands to check tasks 5.1 and 5.2
+
+```
+npm install
+npm run task5
+```
+Navigate to page http://localhost:3000/users/1, then you should see in terminal message "Logged /users/1 GET -- date".

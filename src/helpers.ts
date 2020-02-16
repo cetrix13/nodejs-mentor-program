@@ -1,3 +1,6 @@
+import { ValidationErrorItem, Schema } from "@hapi/joi";
+import { Request, Response, NextFunction } from 'express';
+
 export const reversedStr = (input: string) => (input.split('').reverse().join(''));
 
 export const uniqueID = (() => {
@@ -6,7 +9,7 @@ export const uniqueID = (() => {
 })();
 
 
-export const errorResponse = (schemaErrors) => {
+export const errorResponse = (schemaErrors: ValidationErrorItem[]) => {
     const errors = schemaErrors.map((error) => {
         const { path, message } = error;
         return { path, message };
@@ -17,10 +20,10 @@ export const errorResponse = (schemaErrors) => {
     };
 };
 
-export const validateSchema = (schema) => {
-    return (req, res, next) => {
+export const validateSchema = (schema: Schema) => {
+    return (req: Request, res: Response, next: NextFunction) => {
         const { error } = schema.validate(req.body, {
-            aboartEarly: false,
+            abortEarly: false,
             allowUnknown: false
         });
 
