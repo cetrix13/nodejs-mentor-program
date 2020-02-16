@@ -8,6 +8,8 @@ const GroupSchema_1 = require('./schemas/GroupSchema');
 const express_1 = __importDefault(require('express'));
 const UserController_1 = __importDefault(require('./controllers/UserController'));
 const GroupController_1 = __importDefault(require('./controllers/GroupController'));
+const CustomLogger_1 = __importDefault(require('./middleware/CustomLogger'));
+const ErrorHandler_1 = __importDefault(require('./middleware/ErrorHandler'));
 const app = express_1.default();
 const router = express_1.default.Router();
 const port = process.env.PORT;
@@ -27,6 +29,8 @@ router.route('/groups/:id')
     .get(groupController.getById())
     .put(helpers_1.validateSchema(GroupSchema_1.updateGroupSchema), groupController.update())
     .delete(groupController.delete());
+app.use(CustomLogger_1.default);
+app.use(ErrorHandler_1.default);
 app.use(express_1.default.json());
 app.use('/', router);
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
