@@ -7,7 +7,7 @@ export type UserModelStatic = typeof Model & {
 
 const User = <UserModelStatic>SequelizeInstance.define('user', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
         autoIncrement: true
     },
