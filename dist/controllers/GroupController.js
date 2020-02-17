@@ -68,6 +68,18 @@ class GroupController {
             }
         };
     }
+    addUsersToGroup() {
+        return async (req, res) => {
+            const { params: { id } } = req;
+            const { userIds } = req.body;
+            const result = await this.userGroupService.addUsersToGroup(id, userIds);
+            if (result) {
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(500);
+            }
+        };
+    }
 }
 exports.default = GroupController;
 // # sourceMappingURL=GroupController.js.map

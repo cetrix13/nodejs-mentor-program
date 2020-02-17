@@ -26,7 +26,7 @@ npm run task2
 - create user: http://localhost:3000/users (POST). Request example is in assets/create-user.json
 - view user: http://localhost:3000/users/1 (GET)
 - update user: http://localhost:3000/users/1 (PUT)
-- delete user: http://localhost:300/users/1 (Delete). Peforms a soft delete, `isDeleted` = true.
+- delete user: http://localhost:300/users/1 (DELETE). Peforms a soft delete, `isDeleted` = true.
 
 ### Tasks 3.1 and 3.2
 
@@ -57,7 +57,7 @@ npm run task3
 
 ### Tasks 4.1, 4.2 and 4.3
 
-Please, run the following commands to check tasks 4.1 and 4.2
+Please, run the following commands to check tasks 4.1, 4.2 and 4.3
 
 ```
 npm install
@@ -69,16 +69,17 @@ psql -d nodejs --user=admin -W -f assets/create_users_table.sql
 psql -d nodejs --user=admin -W -f assets/create_groups_table.sql
 psql -d nodejs --user=admin -W -f assets/create_user_group_table.sql
 
-# to check tasks #4.1 and #4.2
+# to check tasks #4.1, #4.2 and #4.3
 npm run task4
 ```
 - view all groups: http://localhost:3000/groups (GET) 
 - create group: http://localhost:3000/groups (POST). Request example is in assets/create-group.json
 - view group: http://localhost:3000/groups/1 (GET)
 - update group: http://localhost:3000/groups/1 (PUT)
-- delete group: http://localhost:300/groups/1 (DELETE).
+- delete group: http://localhost:3000/groups/1 (DELETE).
+- add users to group: http://lolcahost:3000/groups/1 (POST). Request example in assets/add_users_to_group.json
 
-### Tasks 5.1, 5.2
+### Tasks 5.1, 5.2 and 5.3
 
 Please, run the following commands to check tasks 5.1 and 5.2
 

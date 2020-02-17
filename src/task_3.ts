@@ -29,7 +29,9 @@ router.route('/groups')
 router.route('/groups/:id')
     .get(groupController.getById())
     .put(validateSchema(updateGroupSchema), groupController.update())
-    .delete(groupController.delete());
+    .delete(groupController.delete())
+    .post(groupController.addUsersToGroup());
+
 
 app.use(customLogger);
 app.use(errorHandler);

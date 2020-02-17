@@ -69,4 +69,16 @@ export default class GroupController {
             }
         };
     }
+    addUsersToGroup() {
+        return async (req: Request, res: Response) => {
+            const { params: { id } } = req;
+            const { userIds } = req.body;
+            const result = await this.userGroupService.addUsersToGroup(id, userIds);
+            if (result) {
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(500);
+            }
+        }
+    }
 }

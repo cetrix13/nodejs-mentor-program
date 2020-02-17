@@ -28,7 +28,8 @@ router.route('/groups')
 router.route('/groups/:id')
     .get(groupController.getById())
     .put(helpers_1.validateSchema(GroupSchema_1.updateGroupSchema), groupController.update())
-    .delete(groupController.delete());
+    .delete(groupController.delete())
+    .post(groupController.addUsersToGroup());
 app.use(CustomLogger_1.default);
 app.use(ErrorHandler_1.default);
 app.use(express_1.default.json());

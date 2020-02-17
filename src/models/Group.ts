@@ -7,7 +7,7 @@ export type GroupModelStatic = typeof Model & {
 
 const Group = <GroupModelStatic>SequelizeInstance.define('group', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
         autoIncrement: true
     },

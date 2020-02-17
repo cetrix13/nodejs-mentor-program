@@ -7,6 +7,10 @@ export default class User {
     private age: number;
     public isDeleted: boolean;
 
+    static createFromObject({ id, login, password, age, isDeleted }) {
+        return new User(id, login, password, age, isDeleted);
+    }
+
     constructor(id: number, login: string, password: string, age: number, isDeleted = false) {
         this.id = id || uniqueID();
         this.login = login;

@@ -8,6 +8,9 @@ class User {
         this.age = age;
         this.isDeleted = isDeleted;
     }
+    static createFromObject({ id, login, password, age, isDeleted }) {
+        return new User(id, login, password, age, isDeleted);
+    }
 }
 exports.default = User;
 // # sourceMappingURL=UserDto.js.map

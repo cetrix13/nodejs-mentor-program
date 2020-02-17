@@ -6,7 +6,7 @@ const sequelize_1 = require('sequelize');
 const connect_1 = __importDefault(require('../config/connect'));
 const Group = connect_1.default.define('group', {
     id: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.UUID,
         primaryKey: true,
         autoIncrement: true
     },

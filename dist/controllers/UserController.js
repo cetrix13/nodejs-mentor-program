@@ -24,8 +24,8 @@ class UserController {
     }
     create() {
         return async (req, res) => {
-            const { id, login, password, age, isDeleted } = req.body;
-            const user = new UserDto_1.default(id, login, password, age, isDeleted);
+            const { body = {} } = req;
+            const user = UserDto_1.default.createFromObject(body);
             const result = await this.userService.createUser(user);
             if (result) {
                 res.status(200).send(user);
