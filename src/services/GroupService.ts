@@ -1,5 +1,6 @@
 import GroupModel from '../models/Group';
 import Service from './Service';
+import logger from '../loggers/Logger';
 
 export default class GroupService extends Service {
     protected model;
@@ -10,7 +11,7 @@ export default class GroupService extends Service {
 
     getAllGroups() {
         return this.model.findAll()
-            .catch(err => console.error(err));
+            .catch(err => logger.error(err.message));
     }
 
     getGroupById(id: number) {

@@ -1,5 +1,6 @@
 import UserModel from '../models/User';
 import Service from './Service';
+import logger from '../loggers/Logger';
 
 export default class UserService extends Service {
 
@@ -25,6 +26,6 @@ export default class UserService extends Service {
 
     deleteUser(id) {
         return this.model.update({ isDeleted: true }, { where: { id } })
-            .catch(err => console.error(err));
+            .catch(err => logger.error(err.message));
     }
 }

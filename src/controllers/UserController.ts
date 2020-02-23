@@ -16,7 +16,7 @@ export default class UserController {
     getAll() {
         return async (_req: Request, res: Response) => {
             const users = await this.userService.getAllUsers();
-            if (users) {
+            if (users !== null) {
                 res.status(200).send(users);
             } else {
                 res.sendStatus(500);

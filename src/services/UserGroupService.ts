@@ -1,6 +1,7 @@
 import UserGroupModel from '../models/UserGroup';
 import Service from './Service';
 import SequelizeInstance from '../config/connect';
+import logger from '../loggers/Logger';
 
 export default class UserGroupService extends Service {
 
@@ -10,11 +11,11 @@ export default class UserGroupService extends Service {
 
     deleteGroup(groupId) {
         return this.model.destroy({ where: { group_id: groupId } })
-            .catch(err => console.error(err));
+            .catch(err => logger.error(err.message));
     }
     deleteUser(userId) {
         return this.model.destroy({ where: { user_id: userId } })
-            .catch(err => console.error(err));
+            .catch(err => logger.error(err.message));
     }
 
     async addUsersToGroup(groupId, userIds) {
@@ -24,7 +25,7 @@ export default class UserGroupService extends Service {
                 const t = await SequelizeInstance.transaction();
                 transactionsArray.push(t);
                 await this.model.create({ group_id: groupId, user_id: userIds[i] }, { transaction: t })
-                    .catch(err => console.error(err));
+                    .catch(err => logger.error(err.message));
                 await t.commit();
             }
         } catch (error) {

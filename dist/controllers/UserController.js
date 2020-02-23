@@ -15,7 +15,7 @@ class UserController {
     getAll() {
         return async (_req, res) => {
             const users = await this.userService.getAllUsers();
-            if (users) {
+            if (users !== null) {
                 res.status(200).send(users);
             } else {
                 res.sendStatus(500);
