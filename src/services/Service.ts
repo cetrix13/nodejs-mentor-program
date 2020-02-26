@@ -12,26 +12,21 @@ export default class Service {
     }
     getAll() {
         return this.model.findAll({ where: { isDeleted: false } })
-            .catch(err => logger.error(err.message));
     }
 
     getById(id: number) {
-        return this.model.findAll({ where: { id } })
-            .catch(err => logger.error(err.message));
+        return this.model.findOne({ where: { id } })
     }
 
-    create(entity): object {
+    create(entity) {
         return this.model.create(entity)
-            .catch(err => logger.error(err.message));
     }
 
     update(id, fields) {
         return this.model.update(fields, { where: { id } })
-            .catch(err => logger.error(err.message));
     }
 
     delete(id) {
         return this.model.destroy({ where: { id } })
-            .catch(err => logger.error(err.message));
     }
 }

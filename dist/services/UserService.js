@@ -3,7 +3,6 @@ const __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, '__esModule', { value: true });
 const Service_1 = __importDefault(require('./Service'));
-const Logger_1 = __importDefault(require('../loggers/Logger'));
 class UserService extends Service_1.default {
     constructor(userModel) {
         super(userModel);
@@ -21,8 +20,7 @@ class UserService extends Service_1.default {
         return this.update(id, fields);
     }
     deleteUser(id) {
-        return this.model.update({ isDeleted: true }, { where: { id } })
-            .catch(err => Logger_1.default.error(err.message));
+        return this.model.update({ isDeleted: true }, { where: { id } });
     }
 }
 exports.default = UserService;

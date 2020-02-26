@@ -1,7 +1,7 @@
 import winston from 'winston';
 
 export default winston.createLogger({
-    level: 'info',
+    level: 'error',
     format: winston.format.json(),
     transports: [
         new winston.transports.File({ filename: 'error.log', level: 'error' }),
