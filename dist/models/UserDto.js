@@ -1,5 +1,5 @@
-Object.defineProperty(exports, '__esModule', { value: true });
-const helpers_1 = require('../helpers');
+Object.defineProperty(exports, "__esModule", { value: true });
+const helpers_1 = require("../helpers");
 class User {
     constructor(id, login, password, age, isDeleted = false) {
         this.id = id || helpers_1.uniqueID();
@@ -13,4 +13,4 @@ class User {
     }
 }
 exports.default = User;
-// # sourceMappingURL=UserDto.js.map
+//# sourceMappingURL=UserDto.js.map

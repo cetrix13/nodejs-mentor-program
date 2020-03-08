@@ -1,12 +1,12 @@
-const __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { 'default': mod };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-Object.defineProperty(exports, '__esModule', { value: true });
+Object.defineProperty(exports, "__esModule", { value: true });
 // https://github.com/nickewing/line-reader
-const line_reader_1 = __importDefault(require('line-reader'));
-const csvtojson_1 = __importDefault(require('csvtojson'));
-const fs_1 = __importDefault(require('fs'));
-const constants_js_1 = require('./constants.js');
+const line_reader_1 = __importDefault(require("line-reader"));
+const csvtojson_1 = __importDefault(require("csvtojson"));
+const fs_1 = __importDefault(require("fs"));
+const constants_js_1 = require("./constants.js");
 let index = 1;
 let headers = [];
 const newFile = fs_1.default.createWriteStream(constants_js_1.NEW_FILE_PATH, {
@@ -26,4 +26,4 @@ line_reader_1.default.eachLine(constants_js_1.FILE_PATH, line => {
     index++;
 });
 console.log('## New csv file is created! ##');
-// # sourceMappingURL=task_1_2.js.map
+//# sourceMappingURL=task_1_2.js.map

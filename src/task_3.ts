@@ -6,12 +6,14 @@ import UserController from './controllers/UserController';
 import GroupController from './controllers/GroupController';
 import customLogger from './middleware/CustomLogger';
 import errorHandler from './middleware/ErrorHandler';
+import AuthController from './controllers/AuthController';
 
 const app: Application = express();
 const router = express.Router();
 const port = process.env.PORT;
 const userController = new UserController();
 const groupController = new GroupController();
+const authController = new AuthController();
 
 router.route('/users')
     .get(userController.getAll())
@@ -31,6 +33,9 @@ router.route('/groups/:id')
     .put(validateSchema(updateGroupSchema), groupController.update())
     .delete(groupController.delete())
     .post(groupController.addUsersToGroup());
+
+router.route('/login')
+    .post(authController.authenticate());
 
 
 app.use(customLogger);

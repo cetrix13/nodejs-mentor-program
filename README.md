@@ -91,3 +91,15 @@ Navigate to page http://localhost:3000/users/1, then you should see in terminal 
 To check that errors appear in `error.log`, please pass incorrect params in methods:
 - http://localhost:3000/groups/incorrect (GET)
 - http://localhost:3000/users/xxx (GET)
+
+
+### Tasks 6.1, 6.2
+
+Please, run the following commands to check tasks 6.1 and 6.2
+
+```
+npm install
+npm run task6
+```
+
+Make a request `assets/auth-user.json` to endpoint http://localhost:3000/login (POST) to get JWT-token. 

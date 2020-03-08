@@ -83,7 +83,7 @@ export default class UserController {
 
             const result = await Promise.all([this.userService.deleteUser(id), this.userGroupService.deleteUser(id) ])
                 .then(value => value)
-                .catch (err => { logger.error(err.message, { url, method, params }) });
+                .catch(err => { logger.error(err.message, { url, method, params }) });
 
             if (result) {
                 res.sendStatus(200);
