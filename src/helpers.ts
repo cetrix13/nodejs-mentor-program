@@ -1,5 +1,6 @@
 import { ValidationErrorItem, Schema } from "@hapi/joi";
 import { Request, Response, NextFunction } from 'express';
+import path from 'path';
 
 export const reversedStr = (input: string) => (input.split('').reverse().join(''));
 
@@ -34,3 +35,9 @@ export const validateSchema = (schema: Schema) => {
         }
     };
 };
+
+export const showMainPage = () => { 
+    return (_req: Request, res: Response) => {
+        res.sendFile(path.join(__dirname + '/../src/index.html'));
+    }
+}

@@ -1,4 +1,8 @@
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = __importDefault(require("path"));
 exports.reversedStr = (input) => (input.split('').reverse().join(''));
 exports.uniqueID = (() => {
     let count = 0;
@@ -26,6 +30,11 @@ exports.validateSchema = (schema) => {
         else {
             return next();
         }
+    };
+};
+exports.showMainPage = () => {
+    return (_req, res) => {
+        res.sendFile(path_1.default.join(__dirname + '/../src/index.html'));
     };
 };
 //# sourceMappingURL=helpers.js.map

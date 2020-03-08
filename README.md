@@ -102,4 +102,4 @@ npm install
 npm run task6
 ```
 
-Make a request `assets/auth-user.json` to endpoint http://localhost:3000/login (POST) to get JWT-token. 
+Make a request `assets/auth-user.json` to endpoint http://localhost:3000/login (POST) to get JWT-token. Copy the token and pass it in `x-access-token` for every request.

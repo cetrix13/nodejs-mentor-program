@@ -8,7 +8,7 @@ export default class AuthController {
     authenticate() {
         return (req: Request, res: Response) => {
             const { url, method } = req;
-            const { body: { username } } = req;
+            const { body: { username = '' } } = req;
 
             fs.readFile(REGISTRED_USERS_REGISTRY, (err, data) => {
                 if (err) logger.error(err.message, { url, method });
