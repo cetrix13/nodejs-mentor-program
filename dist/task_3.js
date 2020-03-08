@@ -12,12 +12,20 @@ const AuthController_1 = __importDefault(require("./controllers/AuthController")
 const CustomLogger_1 = __importDefault(require("./middleware/CustomLogger"));
 const ErrorHandler_1 = __importDefault(require("./middleware/ErrorHandler"));
 const CheckToken_1 = __importDefault(require("./middleware/CheckToken"));
+const cors_1 = __importDefault(require("cors"));
 const app = express_1.default();
 const router = express_1.default.Router();
 const port = process.env.PORT;
 const userController = new UserController_1.default();
 const groupController = new GroupController_1.default();
 const authController = new AuthController_1.default();
+const corsOptions = {
+    origin: '*',
+    methods: 'GET,PUT,POST,DELETE',
+    optionsSuccessStatus: 200
+};
+app.use(cors_1.default(corsOptions));
+app.options('*', cors_1.default());
 router.route('/')
     .get(helpers_1.showMainPage());
 router.route('/users')

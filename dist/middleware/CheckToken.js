@@ -9,11 +9,13 @@ exports.default = (req, res, next) => {
     if (!token) {
         res.status(401).send({ status: false, message: 'No token provided' });
     }
-    return jsonwebtoken_1.default.verify(token, constants_1.SECRET_KEY, function (err) {
-        if (err) {
-            res.status(403).send({ status: false, message: 'Failed to authenticate token' });
-        }
-        next();
-    });
+    else {
+        return jsonwebtoken_1.default.verify(token, constants_1.SECRET_KEY, function (err) {
+            if (err) {
+                res.status(403).send({ status: false, message: 'Failed to authenticate token' });
+            }
+            next();
+        });
+    }
 };
 //# sourceMappingURL=CheckToken.js.map

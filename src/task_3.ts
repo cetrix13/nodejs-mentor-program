@@ -8,6 +8,7 @@ import AuthController from './controllers/AuthController';
 import customLogger from './middleware/CustomLogger';
 import errorHandler from './middleware/ErrorHandler';
 import checkToken from './middleware/CheckToken';
+import cors from 'cors';
 
 const app: Application = express();
 const router = express.Router();
@@ -15,7 +16,13 @@ const port = process.env.PORT;
 const userController = new UserController();
 const groupController = new GroupController();
 const authController = new AuthController();
-
+const corsOptions = {
+    origin: '*',
+    methods: 'GET,PUT,POST,DELETE',
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+app.options('*', cors())
 
 router.route('/')
     .get(showMainPage());
