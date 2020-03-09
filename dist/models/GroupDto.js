@@ -1,5 +1,5 @@
-Object.defineProperty(exports, "__esModule", { value: true });
-const helpers_1 = require("../helpers");
+Object.defineProperty(exports, '__esModule', { value: true });
+const helpers_1 = require('../helpers');
 class Group {
     constructor(id, name, permissions) {
         this.id = id || helpers_1.uniqueID();
@@ -8,4 +8,4 @@ class Group {
     }
 }
 exports.default = Group;
-//# sourceMappingURL=GroupDto.js.map
+// # sourceMappingURL=GroupDto.js.map

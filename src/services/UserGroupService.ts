@@ -1,7 +1,6 @@
 import UserGroupModel from '../models/UserGroup';
 import Service from './Service';
 import SequelizeInstance from '../config/connect';
-import logger from '../loggers/Logger';
 
 export default class UserGroupService extends Service {
 

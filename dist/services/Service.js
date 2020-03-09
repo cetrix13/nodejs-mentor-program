@@ -1,4 +1,4 @@
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, '__esModule', { value: true });
 class Service {
     constructor(model) {
         this.model = model;
@@ -20,4 +20,4 @@ class Service {
     }
 }
 exports.default = Service;
-//# sourceMappingURL=Service.js.map
+// # sourceMappingURL=Service.js.map

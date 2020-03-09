@@ -1,8 +1,8 @@
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+const __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { 'default': mod };
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const Service_1 = __importDefault(require("./Service"));
+Object.defineProperty(exports, '__esModule', { value: true });
+const Service_1 = __importDefault(require('./Service'));
 class GroupService extends Service_1.default {
     constructor(groupModel) {
         super(groupModel);
@@ -24,4 +24,4 @@ class GroupService extends Service_1.default {
     }
 }
 exports.default = GroupService;
-//# sourceMappingURL=GroupService.js.map
+// # sourceMappingURL=GroupService.js.map

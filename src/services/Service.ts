@@ -1,5 +1,4 @@
 import { Model, BuildOptions } from 'sequelize/types';
-import logger from '../loggers/Logger';
 
 type ServiceModel = typeof Model & {
     new(values?: object, options?: BuildOptions);

@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Site API</a>
+                <a class="navbar-brand" href="/">Site API</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -30,32 +30,36 @@
             <!--/.nav-collapse -->
         </div>
     </nav>
-    
     <div class="container">
         <div class="alert alert-info">
-            <p>Please before sending a request, get a token through <a class="alert-link" href='http://localhost:3000/login'>http://localhost:3000/login (POST)</a></p>
+            <p>Please before sending a request, get a token through <a class="alert-link"
+                    href='http://localhost:3000/login'>http://localhost:3000/login (POST)</a></p>
             <p>Provide the token in heading <strong>x-access-token</strong> for every request.</p>
         </div>
         <div class="api">
             <ul class="list-group">
                 <li class="list-group-item">view all users: <a href="/users">http://localhost:3000/users</a></li>
-                <li class="list-group-item">create user: http://localhost:3000/users (POST). Request example is in assets/create-user.json</li>
+                <li class="list-group-item">create user: http://localhost:3000/users (POST). Request example is in
+                    assets/create-user.json</li>
                 <li class="list-group-item">view user: <a href="/users/1">http://localhost:3000/users/1</a></li>
                 <li class="list-group-item">update user: http://localhost:3000/users/1 (PUT)</li>
-                <li class="list-group-item">delete user: http://localhost:300/users/1 (DELETE). Peforms a soft delete, `isDeleted` = true.</li> 
+                <li class="list-group-item">delete user: http://localhost:300/users/1 (DELETE). Peforms a soft delete,
+                    `isDeleted` = true.</li>
             </ul>
-
             <ul class="list-group">
                 <li class="list-group-item">view all groups: <a href="/groups">http://localhost:3000/groups</a></li>
                 <li class="list-group-item">create group: http://localhost:3000/groups (POST). Request example is in
-                    assets/create-group.json</li>
+                    assets/create-group.json
+                </li>
                 <li class="list-group-item">view group: <a href="/groups/1">http://localhost:3000/groups/1</a></li>
                 <li class="list-group-item">update group: http://localhost:3000/group/1 (PUT)</li>
                 <li class="list-group-item">delete group: http://localhost:300/group/1 (DELETE)</li>
-                <li class="list-group-item">add users to group: http://lolcahost:3000/groups/1 (POST). Request example in assets/add_users_to_group.json</li>
+                <li class="list-group-item">add users to group: http://lolcahost:3000/groups/1 (POST). Request example
+                    in assets/add_users_to_group.json</li>
             </ul>
         </div>
-    </div><!-- /.container -->
+    </div>
+    <!-- /.container -->
 </body>
 
 </html>
