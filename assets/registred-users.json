@@ -8,5 +8,15 @@
         "id": 2,
         "username:": "maxim-smirnov",
         "age": 26
+    },
+    {
+        "id": 3,
+        "username:": "anna-ivanova",
+        "age": 22
+    },
+    {
+        "id": 4,
+        "username:": "ivan-troshkin",
+        "age": 30
     }
 ]
