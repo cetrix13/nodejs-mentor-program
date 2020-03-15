@@ -4,7 +4,7 @@
   "description": "My homework for nodejs mentor program",
   "main": "index.js",
   "scripts": {
-    "test": "jest src/tests",
+    "test": "NODE_ENV=test jest src/tests",
     "build": "tsc --project tsconfig.json && eslint --fix ./dist --ext .js",
     "dev": "tsc --project tsconfig.json --watch",
     "node": "PORT=3000 nodemon ./dist/task_3.js",
@@ -31,10 +31,15 @@
   },
   "homepage": "https://github.com/cetrix13/nodejs-mentor-program#readme",
   "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/jest": "^25.1.4",
     "babel-eslint": "^10.0.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2",
+    "ts-jest": "^25.2.1",
     "typescript": "^3.7.5"
   },
   "dependencies": {
