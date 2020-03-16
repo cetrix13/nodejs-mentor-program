@@ -1,4 +1,4 @@
-const helpers = require('../../src/helpers.ts');
+const helpers = require('../../../src/helpers.ts');
 const reversedStr = helpers.reversedStr;
 
 test('test string reversion', () => {

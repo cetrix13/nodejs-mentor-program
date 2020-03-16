@@ -14,7 +14,8 @@
     "task3": "PORT=3000 node ./dist/task_3.js",
     "task4": "PORT=3000 node ./dist/task_3.js",
     "task5": "PORT=3000 node ./dist/task_3.js",
-    "task6": "PORT=3000 node ./dist/task_3.js"
+    "task6": "PORT=3000 node ./dist/task_3.js",
+    "task7": "PORT=3000 node ./dist/task_3.js"
   },
   "repository": {
     "type": "git",
