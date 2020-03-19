@@ -7,7 +7,7 @@ export const createGroupSchema = Joi.object().keys({
 });
 
 export const updateGroupSchema = Joi.object().keys({
-    id: Joi.number().required(),
+    id: Joi.number(),
     name: Joi.string(),
     permissions: Joi.array().items(Joi.string()),
 });

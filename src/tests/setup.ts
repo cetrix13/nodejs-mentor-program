@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
 import SequelizeInstance from '../config/connect';
 
-const queryInterface = SequelizeInstance.getQueryInterface();
-
 export async function createSchemaAndSeedDB() {
+    const queryInterface = SequelizeInstance.getQueryInterface();
+
     await queryInterface.createTable(
         'users',
         {
@@ -44,9 +44,6 @@ export async function createSchemaAndSeedDB() {
             permissions: {
                 type: DataTypes.ARRAY(DataTypes.STRING)
             }
-        },
-        {
-            underscored: true,
         }
     );
 
@@ -140,7 +137,9 @@ export async function createSchemaAndSeedDB() {
     );
 }
 
+
 export function dropTables() {
+    const queryInterface = SequelizeInstance.getQueryInterface();
     queryInterface.dropAllTables();
 }
 

@@ -9,7 +9,7 @@ exports.createGroupSchema = joi_1.default.object().keys({
     permissions: joi_1.default.array().items(joi_1.default.string()).required()
 });
 exports.updateGroupSchema = joi_1.default.object().keys({
-    id: joi_1.default.number().required(),
+    id: joi_1.default.number(),
     name: joi_1.default.string(),
     permissions: joi_1.default.array().items(joi_1.default.string())
 });

@@ -1,12 +1,12 @@
 import app from '../../app';
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import testUser from '../stubs/user';
+import testGroup from '../stubs/group';
 import { createSchemaAndSeedDB, dropTables } from '../setup';
 
 chai.use(chaiHttp);
 
-describe('UserControler', () => {
+describe('GroupController', () => {
     let token;
     beforeAll(async () => {
         await createSchemaAndSeedDB();
@@ -15,12 +15,12 @@ describe('UserControler', () => {
             .catch(err => { throw new Error(err) });
     });
     afterAll(() => {
-      return dropTables();
+       return dropTables();
     });
 
-    test('should return a not-empty list of users', async() => {
+    test('should return a not-empty list of groups', async() => {
         await chai.request(app)
-            .get('/users')
+            .get('/groups')
             .set('x-access-token', token)
             .then((res) => {
                 expect(res).to.have.status(200);
@@ -31,35 +31,35 @@ describe('UserControler', () => {
             });
     });
 
-    test('should return a specific user', async() => {
+    test('should return a specific group', async() => {
         await chai.request(app)
-            .get('/users/1')
+            .get('/groups/1')
             .set('x-access-token', token)
             .then((res) => {
                 expect(res).to.have.status(200);
-                expect(res.body).to.have.all.keys('age', 'id', 'isDeleted', 'login', 'password');
+                expect(res.body).to.have.all.keys('id', 'name', 'permissions');
             }).catch((err) => {
                 throw new Error(err);
             });
     });
 
-    test('should create a user', async() => {
+    test('should create a group', async () => {
         await chai.request(app)
-            .post('/users')
+            .post('/groups')
             .set('x-access-token', token)
-            .send(testUser)
+            .send(testGroup)
             .then((res) => {
                 expect(res).to.have.status(200);
-                expect(res.body).to.eql(testUser);
+                expect(res.body).to.eql(testGroup);
             }).catch((err) => {
                 throw new Error(err);
             });
     });
 
-    test('should update a user', async () => {
-        const fieldsToUpdate = { age: 20, login: 'test-user', password: 'password' };
+    test('should update a group', async () => {
+        const fieldsToUpdate = { name: 'superusers', permissions: ['CREATE', 'WRITE', 'DELETE'] };
         await chai.request(app)
-            .put('/users/1')
+            .put('/groups/1')
             .set('x-access-token', token)
             .send(fieldsToUpdate)
             .then((res) => {
@@ -70,11 +70,10 @@ describe('UserControler', () => {
             });
     });
 
-    test('should soft delete a user', async () => {
+    test('should delete a group', async () => {
         await chai.request(app)
-            .delete('/users/4')
+            .delete('/groups/2')
             .set('x-access-token', token)
-            .send({ isDeleted: true })
             .then((res) => {
                 expect(res).to.have.status(200);
                 expect(res.body).to.be.ok;
@@ -82,13 +81,5 @@ describe('UserControler', () => {
                 throw new Error(err);
             });
 
-        await chai.request(app)
-            .get('/users/4')
-            .set('x-access-token', token)
-            .then((response) => {
-                expect(response.body).to.have.property('isDeleted', true);
-            }).catch(err => { 
-                throw new Error(err) 
-            });
     });
 });
