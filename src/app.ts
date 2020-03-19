@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { validateSchema, showMainPage } from './helpers';
 import { createUserSchema, updateUserSchema } from './schemas/UserSchema';
 import { createGroupSchema, updateGroupSchema } from './schemas/GroupSchema';

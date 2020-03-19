@@ -138,8 +138,9 @@ export async function createSchemaAndSeedDB() {
 }
 
 
-export function dropTables() {
+export async function dropTables() {
     const queryInterface = SequelizeInstance.getQueryInterface();
-    queryInterface.dropAllTables();
+    await queryInterface.dropAllTables();
+    await SequelizeInstance.close();
 }
 
