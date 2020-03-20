@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import app from '../../app';
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
@@ -6,25 +7,20 @@ import { createSchemaAndSeedDB, dropTables } from '../setup';
 
 chai.use(chaiHttp);
 
-let token;
-
 describe('UserControler', () => {
 
     beforeAll(async () => {
         await createSchemaAndSeedDB();
-        token = await chai.request(app).post('/login').send({ username: 'oleg-pronin' })
-            .then(res => res.text)
-            .catch(err => { throw new Error(err) });
     });
 
-    afterAll(() => {
-        dropTables();
+    afterAll(async () => {
+        await dropTables();
     });
 
     test('should return a not-empty list of users', (done) => {
         chai.request(app)
             .get('/users')
-            .set('x-access-token', token)
+            .set('x-access-token', process.env.TOKEN)
             .then((res) => {
                 expect(res).to.have.status(200);
                 expect(res).to.be.json;
@@ -39,7 +35,7 @@ describe('UserControler', () => {
     test('should return a specific user', (done) => {
         chai.request(app)
             .get('/users/1')
-            .set('x-access-token', token)
+            .set('x-access-token', process.env.TOKEN)
             .then((res) => {
                 expect(res).to.have.status(200);
                 expect(res.body).to.have.all.keys('age', 'id', 'isDeleted', 'login', 'password');
@@ -53,7 +49,7 @@ describe('UserControler', () => {
     test('should create a user', (done) => {
         chai.request(app)
             .post('/users')
-            .set('x-access-token', token)
+            .set('x-access-token', process.env.TOKEN)
             .send(testUser)
             .then((res) => {
                 expect(res).to.have.status(200);
@@ -69,7 +65,7 @@ describe('UserControler', () => {
         const fieldsToUpdate = { age: 20, login: 'test-user', password: 'password' };
         chai.request(app)
             .put('/users/1')
-            .set('x-access-token', token)
+            .set('x-access-token', process.env.TOKEN)
             .send(fieldsToUpdate)
             .then((res) => {
                 expect(res).to.have.status(200);
@@ -84,7 +80,7 @@ describe('UserControler', () => {
     test('should soft delete a user', async (done) => {
         await chai.request(app)
             .delete('/users/4')
-            .set('x-access-token', token)
+            .set('x-access-token', process.env.TOKEN)
             .send({ isDeleted: true })
             .then((res) => {
                 expect(res).to.have.status(200);
@@ -96,7 +92,7 @@ describe('UserControler', () => {
 
         chai.request(app)
             .get('/users/4')
-            .set('x-access-token', token)
+            .set('x-access-token', process.env.TOKEN)
             .then((response) => {
                 expect(response.body).to.have.property('isDeleted', true);
                 done();

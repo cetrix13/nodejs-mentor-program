@@ -4,7 +4,7 @@
   "description": "My homework for nodejs mentor program",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest --runInBand src/tests",
+    "test": "jest --runInBand src/tests",
     "build": "tsc --project tsconfig.json && eslint --fix ./dist --ext .js",
     "dev": "tsc --project tsconfig.json --watch",
     "node": "nodemon ./dist/task_3.js",
