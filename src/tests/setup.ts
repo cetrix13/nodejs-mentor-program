@@ -24,9 +24,6 @@ export async function createSchemaAndSeedDB() {
             is_deleted: {
                 type: DataTypes.BOOLEAN
             }
-        },
-        {
-            underscored: true,
         }
     );
 
@@ -61,9 +58,6 @@ export async function createSchemaAndSeedDB() {
             group_id: {
                 type: DataTypes.SMALLINT
             }
-        },
-        {
-            underscored: true,
         }
     );
 

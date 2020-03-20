@@ -9,6 +9,7 @@
         "alwaysStrict": false,
         "noImplicitUseStrict": true,
         "moduleResolution": "node",
+        "resolveJsonModule": true,        
         "sourceMap": true,
         "sourceRoot": "./src/*.ts",
         "outDir": "dist",
@@ -18,12 +19,12 @@
             "*": [
                 "node_modules/*"
             ]
-        }
+        },
     },
     "include": [
         "./src/**/*"
     ],
     "exclude": [
-        "./src/tests/**/*"
+        "./src/tests/**/*",
     ]
 }
